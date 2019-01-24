@@ -4,9 +4,12 @@ service: serverless-wedding
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: production
+  region: eu-west-2
 
 plugins:
   - serverless-offline
+  - serverless-domain-manager
 
 functions:
   api:
@@ -14,3 +17,9 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY /{param+}'
+
+custom:
+  customDomain:
+    domainName: callustheparkers.co.uk
+    basePath: ''
+    createRoute53Record: true
