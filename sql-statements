@@ -1,0 +1,4 @@
+INSERT INTO meals (name) VALUES ('Fish & Chips'), ('Sausage & Chips'), ('Vegetarian Option')
+
+
+INSERT INTO bookings (bookingRef, isEveningOnly) VALUES ('0001', 1), ('0201','0')

@@ -1,0 +1,37 @@
+{
+  "name": "serverless-wedding",
+  "version": "0.0.0",
+  "description": "Serverless API from wedding website",
+  "main": "handler.js",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0",
+    "mysql": "^2.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikek2252/serverless-wedding.git"
+  },
+  "author": "Mikek2252",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Mikek2252/serverless-wedding/issues"
+  },
+  "homepage": "https://github.com/Mikek2252/serverless-wedding#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemailer": "^5.1.1",
+    "serverless-http": "^1.5.5",
+    "serverless-offline": "^3.20.2"
+  },
+  "scripts": {
+    "dev": "sls offline start --port 4500"
+  }
+}
