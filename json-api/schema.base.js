@@ -3,15 +3,19 @@ const mysql = require('mysql')
 const JSONAPI = require('./app')
 
 module.exports = class Schema {
-  constructor ({ type, attributes, relationships }) {
+  constructor ({ type, attributes, relationships, boolean }) {
     this.connection = mysql.createConnection(environment)
     this.type = type
     this.attributes = attributes || []
+    this.boolean = boolean || []
     this.relationships = relationships || []
   }
   defaultHandler (err, result) {
+    console.log(err)
+    console.log(result)
     if (err) this.res.json(err)
     const serialized = this.serialize(result)
+    console.log(serialized)
     this.res.json(serialized)
     this.res = null
   }

@@ -9,7 +9,6 @@ provider:
 
 plugins:
   - serverless-offline
-  - serverless-domain-manager
 
 functions:
   api:
@@ -17,9 +16,3 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY /{param+}'
-
-custom:
-  customDomain:
-    domainName: callustheparkers.co.uk
-    basePath: ''
-    createRoute53Record: true

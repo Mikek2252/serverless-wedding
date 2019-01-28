@@ -7,8 +7,12 @@ module.exports = new BaseSchema({
     'isComing',
     'dietaryRequirements'
   ],
+  boolean: [
+    'isComing'
+  ],
   relationships: [{
     type: 'meals',
+    name: 'meal',
     identifier: 'mealId'
   },
   {

@@ -2,7 +2,12 @@ const schema = require('../schemas/bookings')
 
 module.exports = {
   getAll (req, res) {
-    schema.findAll(res)
+    if (req.query.bookingRef) {
+      const bookingRef = req.query.bookingRef
+      schema.findBy('bookingRef', bookingRef, res, 'belongsTo')
+    } else {
+      schema.findAll(res)
+    }
   },
   getId (req, res) {
     schema.findBy('id', req.params.id, res, 'belongsTo')
@@ -14,7 +19,7 @@ module.exports = {
     schema.res = res
     schema.query(query, function (err, result) {
       if (err) {
-        res.json(err)
+        this.res.json(err)
       } else {
         res.json(req.body)
       }

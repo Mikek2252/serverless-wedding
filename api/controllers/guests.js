@@ -13,15 +13,15 @@ module.exports = {
   patch (req, res) {
     const guest = req.body.data
     const id = schema.connection.escape(req.params.id)
-    const isComing = schema.connection.escape(guest.attributes.isComing) === 'true' ? 1 : 0
-    const dietaryRequirements = schema.connection.escape(guest.attributes.dietaryRequirements)
-    const mealId = guest.relationships.meal && schema.connection.escape(guest.relationships.meal.data.id)
+    const isComing = schema.connection.escape(guest.attributes['is-coming']) === 'true' ? 1 : 0
+    const dietaryRequirements = schema.connection.escape(guest.attributes['dietary-requirements'])
+    const mealId = guest.relationships.meal.data && schema.connection.escape(guest.relationships.meal.data.id)
     const mealQuery = mealId ? `, mealId = ${mealId}` : ''
     const query = `UPDATE guests SET isComing = ${isComing}, dietaryRequirements = ${dietaryRequirements}${mealQuery} WHERE id = ${id}`
     schema.res = res
     schema.query(query, function (err, result) {
       if (err) {
-        res.json(err)
+        this.res.json(err)
       } else {
         res.json(req.body)
       }

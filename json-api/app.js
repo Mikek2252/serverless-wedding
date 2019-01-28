@@ -20,8 +20,15 @@ function normaliseRecord (schema, res) {
   const relationships = {}
   schema.attributes.forEach((attribute) => {
     // TODO: check data for undefined
+    let value
     const dasherized = dasherize(attribute)
-    attributes[dasherized] = res[attribute]
+    if (schema.boolean && schema.boolean.includes(attribute)) {
+      value = res[attribute] === null ? null : !!res[attribute]
+    } else {
+      value = res[attribute]
+      attributes[dasherized] = res[attribute]
+    }
+    attributes[dasherized] = value
   })
   schema.relationships.forEach((relationship) => {
     const name = relationship.name ? relationship.name : relationship.type
@@ -42,7 +49,7 @@ function normaliseRelationship (schema, res) {
   const relationship = {}
   const links = {}
 
-  if (schema && schema.identifier) {
+  if (schema && schema.identifier && res[schema.identifier]) {
     data = {
       id: res[schema.identifier],
       type: schema.type
