@@ -15,4 +15,4 @@ functions:
     handler: api/api.handler
     events:
       - http: ANY /
-      - http: 'ANY /{param+}'
+      - http: ANY /{param+}

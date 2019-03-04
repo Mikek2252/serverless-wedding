@@ -12,7 +12,7 @@ module.exports = new BaseSchema({
   relationships: [{
     type: 'guests',
     links: {
-      related: '/bookings/:id/guests'
+      related: 'guests'
     }
   }]
 })
